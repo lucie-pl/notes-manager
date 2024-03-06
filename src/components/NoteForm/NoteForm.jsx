@@ -2,14 +2,37 @@ import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import s from './style.module.css';
 import { PencilFill, Trash, TrashFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
+import { ValidatorService } from 'services/form-validators';
+import { FieldError } from 'components/FieldError/FieldError';
+
+const VALIDATORS = {
+  title: (value) => {
+    return ValidatorService.min(value, 5) || ValidatorService.max(value, 20);
+  },
+  content: (value) => {
+    return ValidatorService.min(value, 5);
+  },
+};
 
 export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
   const [formValues, setFormValues] = useState({ title: '', content: '' });
+  const [formErrors, setFormErrors] = useState({
+    title: undefined,
+    content: undefined,
+  });
 
   function updateFormValues(e) {
     //We need to destructure in order to be able to update both title and content
     //at the same time
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    validate(e.target.name, e.target.value);
+  }
+
+  function validate(fieldName, fieldValue) {
+    setFormErrors({
+      ...formErrors,
+      [fieldName]: VALIDATORS[fieldName](fieldValue),
+    });
   }
   const actionIcons = (
     <>
@@ -23,7 +46,7 @@ export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
   );
 
   const titleInput = (
-    <>
+    <div className="mb-5">
       <label className="form-label">Title</label>
       <input
         type="text"
@@ -31,10 +54,11 @@ export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
         className="form-control"
         onChange={updateFormValues}
       />
-    </>
+      <FieldError msg={formErrors.title} />
+    </div>
   );
   const contentImput = (
-    <>
+    <div className="mb-5">
       <label className="form-label">Content</label>
       <textarea
         type="text"
@@ -43,7 +67,8 @@ export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
         row="6"
         onChange={updateFormValues}
       />
-    </>
+      <FieldError msg={formErrors.content} />
+    </div>
   );
   const submitButton = (
     <div className={s.submit_btn}>
