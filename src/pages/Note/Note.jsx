@@ -1,14 +1,15 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import s from './style.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { NoteForm } from 'components/NoteForm/NoteForm';
 import { useState } from 'react';
-import { updateNote } from 'store/note/note-slice';
+import { deleteNote, updateNote } from 'store/note/note-slice';
 import { NoteAPI } from 'api/note-api';
 
 export function Note(props) {
   const [isEditable, setIsEditable] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { noteId } = useParams();
   //To select key and value from params, we use useSearchParams() hook
@@ -26,6 +27,14 @@ export function Note(props) {
     dispatch(updateNote(updatedNote));
     setIsEditable(false);
   }
+
+  function deleteNote_(note) {
+    if (window.confirm('Delete the note ?')) {
+      NoteAPI.deleteById(note.id);
+      dispatch(deleteNote(note));
+      navigate('/');
+    }
+  }
   return (
     <>
       {note && (
@@ -34,7 +43,7 @@ export function Note(props) {
           isEditable={isEditable}
           note={note}
           onClickEdit={() => setIsEditable(!isEditable)}
-          onClickTrash={() => alert('Trash clicked')}
+          onClickTrash={() => deleteNote_(note)}
           onSubmit={isEditable && submit}
         />
       )}
