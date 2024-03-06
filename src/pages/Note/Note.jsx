@@ -1,11 +1,14 @@
 import { useParams } from 'react-router-dom';
 import s from './style.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NoteForm } from 'components/NoteForm/NoteForm';
 import { useState } from 'react';
+import { updateNote } from 'store/note/note-slice';
+import { NoteAPI } from 'api/note-api';
 
 export function Note(props) {
   const [isEditable, setIsEditable] = useState(false);
+  const dispatch = useDispatch();
 
   const { noteId } = useParams();
   //To select key and value from params, we use useSearchParams() hook
@@ -18,7 +21,11 @@ export function Note(props) {
     store.NOTE.noteList.find((note) => note.id === parseFloat(noteId))
   );
 
-  function submit() {}
+  async function submit(formValues) {
+    const updatedNote = await NoteAPI.update({ ...formValues, id: note.id });
+    dispatch(updateNote(updatedNote));
+    setIsEditable(false);
+  }
   return (
     <>
       {note && (
