@@ -14,7 +14,14 @@ const VALIDATORS = {
   },
 };
 
-export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
+export function NoteForm({
+  title,
+  onSubmit,
+  onClickEdit,
+  onClickTrash,
+  isEditable = true,
+  note,
+}) {
   const [formValues, setFormValues] = useState({ title: '', content: '' });
   const [formErrors, setFormErrors] = useState({
     title: '',
@@ -62,7 +69,7 @@ export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
       <FieldError msg={formErrors.title} />
     </div>
   );
-  const contentImput = (
+  const contentInput = (
     <div className="mb-5">
       <label className="form-label">Content</label>
       <textarea
@@ -94,8 +101,12 @@ export function NoteForm({ title, onSubmit, onClickEdit, onClickTrash }) {
         </div>
         {actionIcons}
       </div>
-      <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
-      <div className={s.content_input_container}>{contentImput}</div>
+      <div className={`mb-3 ${s.title_input_container}`}>
+        {isEditable && titleInput}
+      </div>
+      <div className={s.content_input_container}>
+        {isEditable ? contentInput : <pre>{note.content}</pre>}
+      </div>
       {onSubmit && submitButton}
     </form>
   );

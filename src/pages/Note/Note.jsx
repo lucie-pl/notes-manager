@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import s from './style.module.css';
 import { useSelector } from 'react-redux';
+import { NoteForm } from 'components/NoteForm/NoteForm';
 
 export function Note(props) {
   const { noteId } = useParams();
@@ -13,5 +14,17 @@ export function Note(props) {
   const note = useSelector((store) =>
     store.NOTE.noteList.find((note) => note.id === parseFloat(noteId))
   );
-  return <>Note</>;
+  return (
+    <>
+      {note && (
+        <NoteForm
+          title={note.title}
+          isEditable={false}
+          note={note}
+          onClickEdit={() => alert('Edit clicked')}
+          onClickTrash={() => alert('Trash clicked')}
+        />
+      )}
+    </>
+  );
 }
