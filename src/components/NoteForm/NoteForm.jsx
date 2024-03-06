@@ -22,10 +22,13 @@ export function NoteForm({
   isEditable = true,
   note,
 }) {
-  const [formValues, setFormValues] = useState({ title: '', content: '' });
+  const [formValues, setFormValues] = useState({
+    title: note?.title,
+    content: note?.content,
+  });
   const [formErrors, setFormErrors] = useState({
-    title: '',
-    content: '',
+    title: note?.title ? undefined : '',
+    content: note?.content ? undefined : '',
   });
 
   function updateFormValues(e) {
@@ -65,6 +68,7 @@ export function NoteForm({
         name="title"
         className="form-control"
         onChange={updateFormValues}
+        value={formValues.title}
       />
       <FieldError msg={formErrors.title} />
     </div>
@@ -78,6 +82,7 @@ export function NoteForm({
         className="form-control"
         row="6"
         onChange={updateFormValues}
+        value={formValues.content}
       />
       <FieldError msg={formErrors.content} />
     </div>
