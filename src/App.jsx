@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NoteAPI } from 'api/note-api';
 import { setNoteList } from 'store/note/note-slice';
+import s from './style.module.css';
 
 export function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ export function App() {
   return (
     <div className="container-fluid">
       <Header />
-      <Outlet />
+      <div className={s.outlet_container}>
+        <Outlet />
+      </div>
     </div>
   );
 }

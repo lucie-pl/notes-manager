@@ -6,7 +6,7 @@ import { App } from 'App';
 import { StrictMode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PageNotFound } from 'pages/PageNotFound/NoteBrowse/PageNoteFound';
-import { NoteBrowse } from 'pages/NoteBrowse/NotwBrowse';
+import { NoteBrowse } from 'pages/NoteBrowse/NoteBrowse';
 import { Note } from 'pages/Note/Note';
 import { NoteCreate } from 'pages/NoteCreate/NoteCreate';
 
