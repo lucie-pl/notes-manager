@@ -29,7 +29,7 @@ export function Note(props) {
   }
 
   function deleteNote_(note) {
-    if (window.confirm('Delete the note ?')) {
+    if (window.confirm('Are you sure you want to delete the note ?')) {
       NoteAPI.deleteById(note.id);
       dispatch(deleteNote(note));
       navigate('/');
