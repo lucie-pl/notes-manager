@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { TextCard } from 'components/TextCard/TextCard';
 import s from './style.module.css';
 import { useNavigate } from 'react-router-dom';

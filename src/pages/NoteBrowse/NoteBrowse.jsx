@@ -1,11 +1,8 @@
-import { TextCard } from 'components/TextCard/TextCard';
-import s from './style.module.css';
 import { NoteList } from 'containers/NoteList/NoteList';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setNoteList } from 'store/note/note-slice';
 
 export function NoteBrowse(props) {
   const [searchText, setSearchText] = useState('');
