@@ -7,7 +7,7 @@ import { FieldError } from 'components/FieldError/FieldError';
 
 const VALIDATORS = {
   title: (value) => {
-    return ValidatorService.min(value, 5) || ValidatorService.max(value, 20);
+    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
   },
   content: (value) => {
     return ValidatorService.min(value, 5);
