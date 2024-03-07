@@ -1,13 +1,13 @@
 import { ButtonPrimary } from 'components/ButtonPrimary/ButtonPrimary';
 import s from './style.module.css';
-import { PencilFill, Trash, TrashFill } from 'react-bootstrap-icons';
+import { PencilFill, TrashFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
 import { ValidatorService } from 'services/form-validators';
 import { FieldError } from 'components/FieldError/FieldError';
 
 const VALIDATORS = {
   title: (value) => {
-    return ValidatorService.min(value, 5) || ValidatorService.max(value, 20);
+    return ValidatorService.min(value, 3) || ValidatorService.max(value, 20);
   },
   content: (value) => {
     return ValidatorService.min(value, 5);

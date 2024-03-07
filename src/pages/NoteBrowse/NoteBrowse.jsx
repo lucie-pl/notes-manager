@@ -1,9 +1,8 @@
-import { TextCard } from 'components/TextCard/TextCard';
-import s from './style.module.css';
 import { NoteList } from 'containers/NoteList/NoteList';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export function NoteBrowse(props) {
   const [searchText, setSearchText] = useState('');
@@ -21,7 +20,6 @@ export function NoteBrowse(props) {
     return containsTitle || containsContent;
   });
 
-  console.log('***');
   return (
     <>
       <div className="row justify-content-center mb-5">
@@ -32,6 +30,15 @@ export function NoteBrowse(props) {
           />
         </div>
       </div>
+
+      {filteredList?.length === 0 && (
+        <div className="d-flex justify-content-center">
+          <span>
+            There's not note, do you want to{' '}
+            <Link to="/note/new"> create one</Link> ?
+          </span>
+        </div>
+      )}
       <NoteList list={filteredList} />
     </>
   );

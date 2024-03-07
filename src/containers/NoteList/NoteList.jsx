@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { TextCard } from 'components/TextCard/TextCard';
 import s from './style.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ export function NoteList({ list }) {
   const dispatch = useDispatch();
 
   function deleteNote_(note) {
-    if (window.confirm('Delete the note ?')) {
+    if (window.confirm('Are you sure you want to delete the note ?')) {
       NoteAPI.deleteById(note.id);
       dispatch(deleteNote(note));
     }
