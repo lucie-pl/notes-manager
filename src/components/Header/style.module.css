@@ -1,5 +1,7 @@
 .container {
-  background-color: white;
+  background-color: rgb(251, 240, 218);
   padding: 30px;
   box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
 }

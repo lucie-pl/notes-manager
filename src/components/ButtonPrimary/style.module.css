@@ -1,6 +1,15 @@
 .button {
+  text-align: center;
+  justify-content: center;
   border-radius: 50px;
   font-weight: bold;
   width: 180px;
   height: 50px;
+  background-color: #e68c8c;
+  border-color: rgb(230, 140, 140);
+}
+
+.button:hover {
+  background-color: rgba(230, 140, 140, 0.8);
+  border-color: rgb(230, 140, 140);
 }
