@@ -15,13 +15,13 @@ npm run dev-server
 ## What it looks like
 
 <img src='/src/assets/images/notes-manager_index.png' width='80%' heigth='60%'>
-<br><br>
+<br><
 <img src='/src/assets/images/notes-manager_note.png' width='80%' heigth='60%'>
-<br><br>
+<br>
 <img src='/src/assets/images/notes-manager_search.png' width='80%' heigth='60%'>
-<br><br>
+<br>
 <img src='/src/assets/images/notes-manager_edit-note.png' width='80%' heigth='60%'>
-<br><br>
+<br>
 <img src='/src/assets/images/notes-manager_create-note.png' width='80%' heigth='60%'>
-<br><br>
+<br>
 <img src='/src/assets/images/notes-manager_no-results.png' width='80%' heigth='60%'>
