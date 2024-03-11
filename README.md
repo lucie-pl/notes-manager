@@ -11,3 +11,8 @@ npm i
 npm start
 npm run dev-server
 ```
+
+## What it looks like
+
+<img src='/src/assets/images/notes-manager_index.png' width='100px' heigth='100px'>
+<img src='/src/assets/images/notes-manager_note.png' width='100px' heigth='100px'>
