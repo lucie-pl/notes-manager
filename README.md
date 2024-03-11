@@ -15,7 +15,7 @@ npm run dev-server
 ## What it looks like
 
 <img src='/src/assets/images/notes-manager_index.png' width='80%' heigth='60%'>
-<br><
+<br>
 <img src='/src/assets/images/notes-manager_note.png' width='80%' heigth='60%'>
 <br>
 <img src='/src/assets/images/notes-manager_search.png' width='80%' heigth='60%'>
