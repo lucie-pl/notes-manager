@@ -25,7 +25,7 @@ export function TextCard({ title, subtitle, content, onClickTrash, onClick }) {
         <div className={s.title_row}>
           <h5 className={`card-title ${s.title_content}`}>{title}</h5>
           <TrashIcon
-            onClick={onClickTrash_} //here we call our special
+            onClick={onClickTrash_}
             size={20}
             onMouseEnter={() => setIsTrashHovered(true)}
             onMouseLeave={() => setIsTrashHovered(false)}

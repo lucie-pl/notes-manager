@@ -47,6 +47,30 @@
       "content": "We declare a ref with the useRef() hook. We can set a default value. => ex: const cardCodeInput = useRef()\nTo access and modify a ref, we use the the .current=> ex: cardCodeInput.current\nThen we can call any function on that element. => ex: cardCodeInput.current.focus()\nWhen we modify it, the modifications apply inside the component but it won't re-render.\nTo store a ref, it happens during the first rendering and we need to apply the ref={cardCodeInput} in the HTML element.",
       "created_at": "13/03/2024",
       "id": 12
+    },
+    {
+      "title": "Memo - useMemo()",
+      "content": "A hook used to memorize values and not rerender the component if the value doesn't change, when the state of another element change.\nIt protects the function, and it will recall the function only if the value change.\n=> ex: const [value, setValue] = useState(1);\nconst result = useMemo( () => heavyCaculation(value), [value]);  (it will be recall only if value change)",
+      "created_at": "2024-03-13",
+      "id": 13
+    },
+    {
+      "title": "Memo - memo()",
+      "content": "It is kind of like useMemo() but on component, to avoid a component to rerender when a state change if nothing changes it the component.\nThe rerender of the component will happen only if the component's props change.",
+      "created_at": "2024-03-13",
+      "id": 14
+    },
+    {
+      "title": "Memo - useCallback()",
+      "content": "The hook useCallback returns a memoized callback function.\nThe useCallback and useMemo hooks are similar. The main difference is that useMemo returns a memoized value and useCallback returns a memoized function.\nOne reason to use useCallback is to prevent a component from re-rendering unless its props have changed.\n\n/!\\ BUT because of \"referential equality\", every time a component re-renders, its functions get recreated. That's why we use useCallback()\n=> ex: \nconst addTodo = useCallback(() => {\n    setTodos((t) => [...t, \"New Todo\"]);\n  }, [todos]);\n",
+      "created_at": "2024-03-13",
+      "id": 15
+    },
+    {
+      "title": "React - useReducer()",
+      "content": "Allow to grouo all operations we may need on a state.\nIf you find yourself keeping track of multiple pieces of state that rely on complex logic, useReducer may be useful.",
+      "created_at": "2024-03-13",
+      "id": 16
     }
   ]
 }
